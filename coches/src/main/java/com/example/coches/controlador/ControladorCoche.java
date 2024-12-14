@@ -40,4 +40,20 @@ public class ControladorCoche {
 		 }
 	 }
 	 
+	 @GetMapping("/coches")
+	 public String listarCoches(Model model) {
+		// Obtener la lista de todos los coches
+		 List<Coche> coches = servicioCoches.obtenerTodos();
+
+
+		 // Agregar la lista de coches al modelo
+		 model.addAttribute("coches", coches);
+		 model.addAttribute("idiomas", Idioma.values());
+
+
+		 // Retornar el nombre de la vista "coches" que se debe renderizar
+		 return "coches"; //<---- Inyecto los datos del modelo en la VISTA |</>| coches.html
+	 }
+
+	 
 }
